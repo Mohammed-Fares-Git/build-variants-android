@@ -23,17 +23,20 @@ android {
             dimension = "paidMode"
             applicationIdSuffix = ".paid"
             versionNameSuffix = "-paid"
+            buildConfigField("boolean", "PAID", "true")
         }
 
         create("free") {
             dimension = "paidMode"
             applicationIdSuffix = ".free"
             versionNameSuffix = "-free"
+            buildConfigField("boolean", "FREE", "true")
         }
     }
 
     buildTypes {
         release {
+            buildConfigField("boolean", "RELEASE", "true")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
