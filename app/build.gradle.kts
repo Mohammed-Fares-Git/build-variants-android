@@ -5,28 +5,16 @@ plugins {
 
 android {
     namespace = "com.mohammedfares.buildvariants"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.mohammedfares.buildvariants"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-
-
     }
 
     flavorDimensions("paidMode")
@@ -44,8 +32,27 @@ android {
         }
     }
 
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+
+        debug {
+            buildConfigField("boolean", "DEBUG", "true")
+        }
+
+
+    }
+
+
+
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     compileOptions {
